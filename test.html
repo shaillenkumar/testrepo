@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./index.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      console.log(params.has('person'));
+      console.log(params.get('person'));
+      let myparm = null;
+      if(params.has('person')){
+         myparm = params.get('person')
+      }
+      window.onload =  function(){
+         var option1 = createOptions("listicon", "mask", "3M");
+         document.getElementById('salesperson').add(option1);
+         (myparm === 'john')?document.getElementById('salesperson').selectedIndex=2:document.getElementById('salesperson').selectedIndex=1;
+      }
+
+
+      function changeSelected(){
+         alert("fn called!")
+         document.getElementById('salesperson').selectedIndex=0;
+      }
+
+
+      function createOptions(className, value, text) {
+        let optionElement = document.createElement("option");
+        optionElement.setAttribute("value", value);
+        optionElement.setAttribute("class", className);
+
+        optionElement.textContent = text;
+        return optionElement;
+    }
+
+    
+
+    
+    </script>
+</head>
+<body>
+    <form id="f1" name="f1">
+
+
+
+        <select id="salesperson" >
+
+            <option value="james">james</option>
+            <option selected value="default">personame</option> 
+            <option value="john">john</option>  
+        </select> 
+
+        <input type="button" value="Reset" onClick="changeSelected();">
+        
+    </form>
+    
+</body>
+</html>
+
